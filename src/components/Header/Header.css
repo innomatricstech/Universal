@@ -1,0 +1,274 @@
+/* ============================================================
+    ULTRA PREMIUM HEADER + NAVBAR (SIZE REDUCED)
+    Glass, 3D, Animation, Luxury Purple Palette
+============================================================ */
+
+/* Base Header */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    
+    /* --- SIZE REDUCTION: Reduced vertical padding --- */
+    padding: 12px 0; 
+    
+    transition: 0.35s ease-in-out;
+    
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(120, 60, 255, 0.15);
+}
+
+/* Scroll Effect (Shrunken Size) */
+.header-scrolled {
+    /* --- SIZE REDUCTION: Reduced vertical padding on scroll --- */
+    padding: 8px 0; 
+
+    /* Enhanced Glass Effect & Shadow */
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 25px rgba(120, 60, 255, 0.35);
+}
+
+/* Container Layout (Typically centered in a max-width container) */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Ensure padding is removed here if using a wrapper div */
+    padding: 0 0; 
+}
+
+/* ==========================
+    LOGO SECTION
+========================== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo img {
+    /* --- SIZE REDUCTION: Default size smaller --- */
+    width: 48px; 
+    height: 48px; 
+    
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    animation: logoPop 0.8s ease forwards;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Logo size when scrolled */
+.header-scrolled .logo img {
+    /* --- SIZE REDUCTION: Scrolled size even smaller --- */
+    width: 40px; 
+    height: 40px; 
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-main {
+    font-size: 1.15rem; /* Slightly reduced */
+    font-weight: 900 !important;
+    color: #2a0038 !important; /* luxury deep purple */
+    letter-spacing: 0.5px;
+}
+
+.logo-sub {
+    font-size: 0.75rem;
+    font-weight: 700 !important;
+    color: #5f2a8f !important; /* soft lavender-purple */
+    opacity: 0.8;
+}
+
+/* ==========================
+    NAVIGATION MENU
+========================== */
+.nav {
+    display: flex;
+    gap: 24px; /* Slightly reduced gap */
+    align-items: center;
+    transition: 0.4s ease;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-weight: 700 !important;
+    font-size: 0.9rem; /* Slightly reduced size */
+    color: #2a0038 !important; /* premium dark purple */
+    position: relative;
+    padding: 4px 0;
+    transition: 0.3s ease;
+    text-transform: capitalize;
+    letter-spacing: 0.4px;
+}
+
+/* Hover underline with animation */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, #3758ff, #9f6bff);
+    transition: width 0.35s ease;
+}
+
+.nav-link:hover {
+    color: #a064ff !important; /* hover lavender glow */
+    text-shadow: 0 0 8px rgba(160, 100, 255, 0.5);
+}
+
+.nav-link:hover::after,
+.nav-link-active::after {
+    width: 100%;
+}
+
+/* Active Page */
+.nav-link-active {
+    color: #7a2cff !important; /* neon purple highlight */
+    font-weight: 800 !important;
+}
+
+/* ==========================
+    CTA BUTTON (Contact)
+========================== */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cta-button {
+    font-size: 0.85rem; /* Slightly reduced size */
+    padding: 0.4rem 1.2rem; /* Reduced padding */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(55, 88, 255, 0.35);
+}
+
+/* ==========================
+    MENU TOGGLE (Mobile)
+========================== */
+.menu-toggle {
+    width: 30px;
+    height: 22px;
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.menu-toggle span {
+    height: 3px;
+    background: #222;
+    border-radius: 4px;
+    transition: 0.3s ease;
+    width: 100%;
+}
+
+/* Hamburger Animation */
+.menu-toggle-open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+.menu-toggle-open span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle-open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ==========================
+    MOBILE NAV PANEL (Side Drawer)
+========================== */
+@media (max-width: 900px) {
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        /* Glass effect for mobile menu */
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(20px);
+        box-shadow: -10px 0 25px rgba(0,0,0,0.15);
+        flex-direction: column;
+        padding-top: 100px; /* Reduced to fit smaller header */
+        gap: 25px;
+        transition: 0.4s ease;
+    }
+
+    .nav-open {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+
+    .menu-toggle {
+        display: flex; /* Show hamburger */
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+    
+    .logo img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Extra small mobile adjustments */
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0.5rem 0; /* Further reduced padding */
+    }
+
+    .logo-text {
+        display: none; /* Hide subtext on very small screens */
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Keyframe Animations */
+@keyframes logoPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}

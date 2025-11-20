@@ -1,0 +1,257 @@
+/* ============================================
+   GLOBAL HOME PAGE WRAPPER
+============================================ */
+.home-page {
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(145deg, #eef1ff, #f8faff);
+}
+
+/* Smooth section spacing */
+.home-page > section {
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  z-index: 2;
+}
+
+/* ============================================
+   LUXURY FLOATING BACKGROUND BLOBS
+============================================ */
+.home-page::before,
+.home-page::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.home-page::before {
+  top: -180px;
+  left: -120px;
+  background: radial-gradient(circle, #6a7bff, #8f5bff, transparent 70%);
+  animation: floatBlob1 10s ease-in-out infinite alternate;
+}
+
+.home-page::after {
+  bottom: -200px;
+  right: -150px;
+  background: radial-gradient(circle, #ff85c0, #ffd6e8, transparent 70%);
+  animation: floatBlob2 12s ease-in-out infinite alternate;
+}
+
+@keyframes floatBlob1 {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(40px,60px); }
+}
+
+@keyframes floatBlob2 {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-50px,-40px); }
+}
+
+/* ============================================
+   LUXURY REVEAL ANIMATION (APPLE STYLE)
+============================================ */
+.home-page .reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  filter: blur(6px);
+  transition: opacity 0.8s ease, 
+              transform 0.9s cubic-bezier(.2,1,.2,1),
+              filter 0.9s ease;
+}
+
+.home-page .reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Soft fade delay for elements */
+.reveal.delay-1 { transition-delay: 0.1s; }
+.reveal.delay-2 { transition-delay: 0.2s; }
+.reveal.delay-3 { transition-delay: 0.3s; }
+
+/* ============================================
+   PREMIUM GRADIENT SECTIONS
+============================================ */
+.home-page .about {
+  background: linear-gradient(135deg, #fafbff 0%, #eef3ff 100%);
+  position: relative;
+}
+
+.home-page .leadership {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7ff 100%);
+}
+
+.home-page .contact {
+  background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+}
+
+/* ============================================
+   3D SCROLL PARALLAX EFFECT FOR BACKGROUNDS
+============================================ */
+.home-page section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transform: translateZ(-60px) scale(1.12);
+  filter: blur(20px);
+  opacity: 0.12;
+  z-index: -1;
+}
+
+/* ============================================
+   LUXURY CARD HOVER (GLOBAL)
+============================================ */
+.home-page .card-hover {
+  transition: transform .5s cubic-bezier(.2,1,.2,1),
+              box-shadow .5s ease;
+}
+
+.home-page .card-hover:hover {
+  transform: translateY(-14px) scale(1.03) rotateX(6deg) rotateY(-6deg);
+  box-shadow: 0 35px 60px rgba(52,84,255,0.25);
+}
+
+/* Optional glow */
+.home-page .card-hover:hover::before {
+  opacity: 1;
+  filter: blur(18px);
+}
+/* ============================================
+   Floating right-side icon-only panel (attractive)
+   Append to the end of Home.css
+   ============================================ */
+
+.floating-contact-icons {
+  position: fixed;
+  right: 20px;
+  bottom: 28px;
+  z-index: 6500;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  pointer-events: none; /* root doesn't block clicks, children opt-in */
+}
+
+/* base button */
+.floating-contact-icons .floating-btn {
+  pointer-events: auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 22px;
+  transition: transform 260ms cubic-bezier(.2,1,.2,1), box-shadow 260ms ease, filter 260ms ease;
+  box-shadow: 0 12px 30px rgba(10,14,35,0.16);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.06);
+  transform-origin: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* WhatsApp style: glassy green pill */
+.floating-contact-icons .floating-whatsapp {
+  background: linear-gradient(180deg, rgba(37,211,102,0.98), rgba(31,174,75,0.95));
+  box-shadow: 0 18px 40px rgba(37,211,102,0.12);
+}
+
+/* Call style: glassy blue pill */
+.floating-contact-icons .floating-call {
+  background: linear-gradient(180deg, rgba(0,123,255,0.98), rgba(0,86,214,0.95));
+  box-shadow: 0 18px 40px rgba(0,123,255,0.12);
+}
+
+/* Icon sizing */
+.floating-contact-icons .floating-btn i,
+.floating-contact-icons .floating-btn svg {
+  width: 26px;
+  height: 26px;
+  line-height: 0;
+}
+
+/* Hover / focus */
+.floating-contact-icons .floating-btn:hover,
+.floating-contact-icons .floating-btn:focus {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 28px 60px rgba(10,14,35,0.26);
+  filter: saturate(1.05);
+}
+
+/* Active press */
+.floating-contact-icons .floating-btn:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+/* Accessible focus ring */
+.floating-contact-icons .floating-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 28px 60px rgba(10,14,35,0.26),
+    0 0 0 6px rgba(99,102,241,0.10);
+}
+
+/* Entrance animation */
+@keyframes floatInRight {
+  from { transform: translateX(18px) translateY(6px) scale(0.98); opacity: 0; }
+  to   { transform: translateX(0) translateY(0) scale(1); opacity: 1; }
+}
+.floating-contact-icons .floating-btn {
+  animation: floatInRight 420ms cubic-bezier(.2,1,.2,1) both;
+}
+
+/* Responsive smaller size on mobile */
+@media (max-width: 480px) {
+  .floating-contact-icons {
+    right: 12px;
+    bottom: 18px;
+    gap: 10px;
+  }
+
+  .floating-contact-icons .floating-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    border-radius: 12px;
+  }
+
+  .floating-contact-icons .floating-btn i,
+  .floating-contact-icons .floating-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Larger screens: slightly bigger */
+@media (min-width: 1400px) {
+  .floating-contact-icons {
+    right: 32px;
+    bottom: 32px;
+    gap: 16px;
+  }
+
+  .floating-contact-icons .floating-btn {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+  }
+
+  .floating-contact-icons .floating-btn i,
+  .floating-contact-icons .floating-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+}

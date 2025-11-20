@@ -1,0 +1,661 @@
+.contact {
+  background: var(--white);
+}
+#contact{
+  margin-top: -120px;
+}
+
+.contact-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-content {
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-info h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: var(--primary-dark);
+}
+
+.contact-description {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  color: var(--text-light);
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-method {
+  border-left: 4px solid var(--primary-blue);
+  transition: all var(--transition-normal);
+}
+
+.contact-method:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.method-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.method-icon {
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.method-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+.method-details p {
+  margin: 0.25rem 0;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.method-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--primary-blue);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.method-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.contact-form-card {
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-form-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-dark);
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .contact-info {
+    order: 2;
+  }
+
+  .contact-form-container {
+    order: 1;
+  }
+}
+.right-subtitle {
+  margin-top: -10px;
+  color: #777;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .method-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .method-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .contact-methods {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-content {
+    gap: 2rem;
+  }
+
+  .contact-form-card {
+    margin: 0 -1rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.625rem 0.875rem;
+  }
+} /* ============================================
+   LUXURY CONTACT SECTION — GLASS + 3D + PREMIUM
+===============================================*/
+
+.contact {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #eef2ff, #f9f9ff, #e8ecff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating background luxury blobs */
+.contact::before,
+.contact::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.25;
+  z-index: 0;
+}
+
+.contact::before {
+  background: radial-gradient(circle, #7b61ff, #9f77ff, transparent 70%);
+  top: -140px;
+  left: -120px;
+  animation: blobMotion1 12s infinite alternate ease-in-out;
+}
+
+.contact::after {
+  background: radial-gradient(circle, #ffc6dd, #ffe2f1, transparent 70%);
+  bottom: -120px;
+  right: -100px;
+  animation: blobMotion2 10s infinite alternate ease-in-out;
+}
+
+@keyframes blobMotion1 {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(60px, 40px); }
+}
+
+@keyframes blobMotion2 {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-50px,-30px); }
+}
+
+/* ============================================
+   TEXT + TITLES
+===============================================*/
+.contact-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #0a1133;
+  text-transform: capitalize;
+  margin-bottom: 12px;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.contact-subtitle {
+  color: #646a83;
+  font-size: 1.1rem;
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   GRID LAYOUT
+===============================================*/
+.contact-content {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  gap: 40px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   LEFT BOX — CONTACT INFORMATION
+===============================================*/
+
+.contact-info {
+  padding: 28px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.32);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  animation: fadeUp 1s ease;
+}
+
+.contact-info h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0a1133;
+  margin-bottom: 14px;
+}
+
+.contact-description {
+  color: #494f68;
+  margin-bottom: 25px;
+}
+
+/* Card inside left box */
+.contact-method {
+  border-radius: 18px;
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: transform .35s ease, box-shadow .4s ease;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.contact-method:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+
+/* ICON + TITLE */
+.method-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.method-icon {
+  font-size: 2rem;
+  padding: 10px;
+  background: rgba(123, 97, 255, 0.14);
+  border-radius: 14px;
+  color: #7b61ff;
+}
+
+.method-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #121633;
+}
+
+/* Details */
+.method-details p {
+  margin: 4px 0;
+  color: #454b68;
+}
+
+/* Link */
+.method-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #6d5bff;
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+}
+
+.method-link::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #6d5bff, #aa76ff);
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  transition: 0.35s ease;
+}
+
+.method-link:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   RIGHT BOX — CONTACT FORM
+===============================================*/
+
+.contact-form-card {
+  padding: 32px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.12);
+  animation: fadeUp 1.2s ease;
+}
+
+.contact-form-card h3 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(45, 55, 87, 0.18);
+  background: #ffffffee;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #7b61ff;
+  box-shadow: 0 0 0 4px rgba(123,97,255,0.25);
+  transform: translateY(-3px);
+}
+
+/* Submit Button Glow */
+.submit-btn {
+  margin-top: 5px;
+  background: linear-gradient(90deg, #7b61ff, #a768ff);
+  box-shadow: 0 14px 40px rgba(123,97,255,0.35);
+  transition: 0.35s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 55px rgba(123,97,255,0.48);
+}
+/* --- Contact Page Wrapper --- */
+.contact-wrapper {
+  width: 100%;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  background: #f3f6ff;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* --- Main Container --- */
+.contact-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.14);
+}
+
+/* --- Left Box (Office Info) --- */
+.left-box {
+  flex: 1;
+  background: linear-gradient(145deg, #003973, #005fa3);
+  padding: 40px 35px;
+  color: #fff;
+}
+
+.left-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Info Row */
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.icon {
+  margin-right: 15px;
+  font-size: 26px;
+  color: #ffda6b;
+}
+
+/* Divider Line */
+.divider {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 25px 0;
+}
+
+/* Map Title */
+.map-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Map Box */
+.map-box iframe {
+  border-radius: 14px;
+}
+
+/* --- Right Box (Form Side) --- */
+.right-box {
+  flex: 1.2;
+  padding: 40px;
+  background: #ffffff;
+}
+
+.right-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #003973;
+  margin-bottom: 25px;
+}
+
+/* --- Form Styling --- */
+.right-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right-form input,
+.right-form select,
+.right-form textarea {
+  font-size: 15px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #d2d6e0;
+  transition: all 0.2s ease-in-out;
+  background: #fff;
+}
+
+.right-form input:focus,
+.right-form textarea:focus,
+.right-form select:focus {
+  border-color: #005fa3;
+  box-shadow: 0 0 0 3px rgba(0, 95, 163, 0.15);
+}
+
+.right-form textarea {
+  resize: vertical;
+}
+
+/* --- Submit Button --- */
+.submit-btn {
+  margin-top: 5px;
+  padding: 14px;
+  font-size: 16px !important;
+  font-weight: 600;
+  border-radius: 10px;
+  background: #005fa3;
+  width: 100%;
+  transition: all 0.25s ease-in-out;
+}
+
+.submit-btn:hover {
+  background: #003973;
+  transform: translateY(-2px);
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .left-box,
+  .right-box {
+    width: 100%;
+  }
+}
+
+/* --- Fade In Animation --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* ================================
+   FIX: IMPROVE TEXT VISIBILITY
+   LEFT BLUE BOX (OUR OFFICE, CONTACT, EMAIL)
+=================================*/
+
+.left-box h4,
+.left-box p,
+.left-box .info-row h4,
+.left-box .info-row p {
+  color: #ffffff !important;
+}
+
+/* Make title strong white */
+.left-title {
+  color: #ffffff !important;
+}
+
+/* Ensure icons stay golden */
+.left-box .icon {
+  color: #ffda6b !important;
+}
+
+/* Improve readability */
+.left-box p {
+  opacity: 1 !important;
+  font-weight: 500;
+}
+
+/* Optional: heading boldness */
+.left-box h4 {
+  font-weight: 700;
+}

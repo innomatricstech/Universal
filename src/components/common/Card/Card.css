@@ -1,0 +1,239 @@
+.card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card-header {
+  padding: 1.5rem 1.5rem 0;
+}
+
+.card-body {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.card-footer {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* Variants */
+.card-primary {
+  border-top: 4px solid var(--primary-blue);
+}
+
+.card-accent {
+  border-top: 4px solid var(--secondary-gold);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card-hover:hover .card-image img {
+  transform: scale(1.1);
+}
+
+/* Stats Card */
+.card-stats {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.card-stats .number {
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.card-stats .label {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Service Card */
+.card-service {
+  text-align: center;
+  padding: 2rem;
+}
+
+.card-service .icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--white);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .card-header {
+    padding: 1rem 1rem 0;
+  }
+  
+  .card-footer {
+    padding: 0 1rem 1rem;
+  }
+  
+  .card-stats .number {
+    font-size: 2.5rem;
+  }
+}
+/* ==========================================================
+   UNIVERSAL 3D GLASS CARD — Works for all Card Components
+   Card, CardBody, CardHeader, CardFooter
+========================================================== */
+
+/* Base Card */
+.card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+
+  transform-style: preserve-3d;
+  transition: 
+    transform 0.5s ease,
+    box-shadow 0.45s ease,
+    background 0.5s ease,
+    border 0.45s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover 3D effect */
+.card-hover:hover {
+  transform: translateY(-14px) scale(1.03) rotateX(6deg) rotateY(-6deg);
+  box-shadow: 0 28px 65px rgba(0,0,0,0.18);
+  border-color: rgba(255,255,255,0.75);
+}
+
+/* Glow Border Effect */
+.card-hover:hover::before {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg, 
+    rgba(52,84,255,0.45), 
+    rgba(153,85,255,0.35),
+    rgba(255,83,192,0.35)
+  );
+  z-index: -1;
+  opacity: 0;
+  filter: blur(14px);
+  transition: 0.45s ease;
+}
+
+/* Shine Effect */
+.card-hover::after {
+  content: "";
+  position: absolute;
+  top: -140%;
+  left: -40%;
+  width: 150%;
+  height: 300%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.3) 0%,
+    rgba(255,255,255,0.05) 40%,
+    rgba(255,255,255,0.25) 60%,
+    rgba(255,255,255,0.05) 100%
+  );
+  transform: rotate(35deg);
+  opacity: 0;
+  transition: 0.6s ease;
+  pointer-events: none;
+}
+
+.card-hover:hover::after {
+  opacity: 1;
+  left: 120%;
+}
+
+/* Card Sections */
+.card-header,
+.card-body,
+.card-footer {
+  position: relative;
+  z-index: 3;
+}
+
+.card-header {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.card-body {
+  font-size: 1rem;
+  color: #2f324b;
+}
+
+.card-footer {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* Optional Color Variants */
+.card-primary {
+  background: linear-gradient(145deg, #3454ff22, #6a6bff11);
+}
+
+.card-secondary {
+  background: linear-gradient(145deg, #ff8aca22, #ffbadc11);
+}
+
+.card-dark {
+  background: rgba(15,15,30,0.75);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.card-dark:hover {
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+}
+

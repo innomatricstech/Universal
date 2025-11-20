@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor folders
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Optional: lock files (if you want)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Local coverage
+coverage/
+
+# Cache
+.cache/
+.eslintcache
+vite.config.ts.timestamp*

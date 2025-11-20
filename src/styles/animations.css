@@ -1,0 +1,159 @@
+/* =========================
+   Animation system - premium
+   ========================= */
+
+/* Timing / easing variables (tweak once here) */
+:root{
+  --anim-fast: 280ms;
+  --anim-std: 520ms;
+  --anim-slow: 820ms;
+  --anim-ease: cubic-bezier(.18,.85,.25,1);
+  --anim-ease-soft: cubic-bezier(.2,.9,.3,1);
+  --anim-spring: cubic-bezier(.16,1,.3,1.05);
+  --shimmer-duration: 1.6s;
+}
+
+/* =========================
+   Keyframes — refined
+   ========================= */
+
+@keyframes fadeInUp {
+  0%   { opacity: 0; transform: translateY(36px) scale(.995); filter: blur(6px); }
+  60%  { transform: translateY(-6px) scale(1.002); } /* tiny overshoot for spring */
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes fadeInLeft {
+  0%   { opacity: 0; transform: translateX(-36px) skewX(0.6deg); filter: blur(6px); }
+  60%  { transform: translateX(8px) skewX(-0.3deg); }
+  100% { opacity: 1; transform: translateX(0) skewX(0); filter: blur(0); }
+}
+
+@keyframes fadeInRight {
+  0%   { opacity: 0; transform: translateX(36px) skewX(-0.6deg); filter: blur(6px); }
+  60%  { transform: translateX(-8px) skewX(0.3deg); }
+  100% { opacity: 1; transform: translateX(0) skewX(0); filter: blur(0); }
+}
+
+@keyframes scaleIn {
+  0%   { opacity: 0; transform: scale(.92) translateY(6px); filter: blur(6px); }
+  70%  { transform: scale(1.02) translateY(0); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+@keyframes slideInFromTop {
+  0%   { opacity: 0; transform: translateY(-48px) perspective(800px) rotateX(6deg); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0) perspective(800px) rotateX(0); filter: blur(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.06); opacity: 0.98; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* =========================
+   Animation utility classes
+   - animation-fill-mode: both keeps final state
+   - use .reveal.active for JS-triggered reveals
+   ========================= */
+
+.animated { animation-fill-mode: both; }
+
+/* Entrance utilities (preferred for scroll reveal) */
+.fade-in-up    { animation-name: fadeInUp;    animation-duration: var(--anim-std); animation-timing-function: var(--anim-spring); }
+.fade-in-left  { animation-name: fadeInLeft;  animation-duration: var(--anim-std); animation-timing-function: var(--anim-spring); }
+.fade-in-right { animation-name: fadeInRight; animation-duration: var(--anim-std); animation-timing-function: var(--anim-spring); }
+.scale-in      { animation-name: scaleIn;     animation-duration: var(--anim-fast); animation-timing-function: var(--anim-ease-soft); }
+.slide-in-top  { animation-name: slideInFromTop; animation-duration: var(--anim-std); animation-timing-function: var(--anim-ease); }
+
+/* micro-animations */
+.pulse        { animation: pulse 2.2s ease-in-out infinite; }
+.float        { animation: float 3.2s ease-in-out infinite; }
+
+/* shimmer (use for skeleton loaders) */
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.06) 100%);
+  background-size: 300% 100%;
+  animation: shimmer var(--shimmer-duration) linear infinite;
+  will-change: background-position;
+  border-radius: 8px;
+}
+
+/* =========================
+   Reveal pattern (scroll-triggered)
+   - start with .reveal (hidden)
+   - when JS adds .active you can also provide utility class
+   ========================= */
+
+.reveal {
+  opacity: 0;
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+  filter: blur(6px);
+  transition: none; /* we rely on animation for entrance */
+}
+
+/* when JS adds 'active' you can apply a chosen animation class too:
+   e.g. <div class="reveal fade-in-up"> ... </div>
+   JS: el.classList.add('active') → we'll trigger animation by toggling a data flag below */
+.reveal.active.fade-in-up    { animation: fadeInUp var(--anim-std) var(--anim-spring) both; }
+.reveal.active.fade-in-left  { animation: fadeInLeft var(--anim-std) var(--anim-spring) both; }
+.reveal.active.fade-in-right { animation: fadeInRight var(--anim-std) var(--anim-spring) both; }
+.reveal.active.scale-in      { animation: scaleIn var(--anim-fast) var(--anim-ease-soft) both; }
+.reveal.active.slide-in-top  { animation: slideInFromTop var(--anim-std) var(--anim-ease) both; }
+
+/* =========================
+   Stagger helpers (useful for lists)
+   Example markup:
+   <div class="stagger" style="--stagger:0.08s">
+     <div class="reveal fade-in-up">A</div>
+     <div class="reveal fade-in-up">B</div>
+     <div class="reveal fade-in-up">C</div>
+   </div>
+   JS should add 'active' to children or to container (see below)
+   ========================= */
+
+.stagger { --stagger: 0.08s; }
+.stagger > .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.stagger.active > .reveal {
+  animation: fadeInUp var(--anim-std) var(--anim-spring) both;
+  animation-delay: calc(var(--stagger) * var(--stagger-index, 1));
+}
+
+/* helper to assign incrementing delays when rendering server-side:
+   set style="--stagger-index:1" on first child, 2 on second, etc.
+   OR use JS to iterate children and set style property. */
+
+/* =========================
+   Small utility delays (quick use)
+   ========================= */
+.delay-1 { animation-delay: 0.12s !important; }
+.delay-2 { animation-delay: 0.24s !important; }
+.delay-3 { animation-delay: 0.36s !important; }
+.delay-4 { animation-delay: 0.48s !important; }
+
+/* =========================
+   Accessibility: reduce motion
+   ========================= */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up, .fade-in-left, .fade-in-right, .scale-in, .slide-in-top,
+  .reveal.active, .pulse, .float, .shimmer {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
