@@ -1,11 +1,11 @@
 // data.js (recommended) or appended below contact component file
 export const COMPANY_INFO = {
-  name: "Universal MultiTrading Inc",
+  name: "Universal Ventures Inc",
   parent: "Fenix Group",
   founded: 2019,
   tagline: "Innovating for a Better Tomorrow",
   vision:
-    "Universal MultiTrading Inc (a subsidiary of Fenix Group) aspires to be a leader in diverse industries, delivering excellence through innovation, ethical business practices, and customer satisfaction.",
+    "Universal Ventures Inc (a subsidiary of Fenix Group) aspires to be a leader in diverse industries, delivering excellence through innovation, ethical business practices, and customer satisfaction.",
   mission: [
     "To build and sustain industry-leading businesses that prioritize quality, customer trust, and long-term value.",
     "To contribute to the well-being of society by ensuring access to fundamental human needs such as food, healthcare, shelter, and education.",

@@ -96,7 +96,7 @@ const Header = () => {
               <div className="logo-glow"></div>
             </div>
             <div className="logo-text">
-              <span className="logo-main">Universal Multi-Trading</span>
+              <span className="logo-main">Universal Ventures</span>
               <span className="logo-sub">Universal Group</span>
             </div>
           </Link>

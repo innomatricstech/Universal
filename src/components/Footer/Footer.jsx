@@ -55,9 +55,9 @@ const Footer = () => {
           {/* LOGO SECTION */}
           <div className="footer-section">
             <div className="footer-logo">
-              <img src="/images/multi.png" alt="Universal MultiTrading Inc" />
+              <img src="/images/multi.png" alt="Universal Ventures" />
               <div className="logo-text">
-                <span className="logo-main">Universal MultiTrading</span>
+                <span className="logo-main">Universal Ventures</span>
                 <span className="logo-sub">Universal Group</span>
               </div>
             </div>
@@ -143,7 +143,7 @@ const Footer = () => {
         {/* BOTTOM COPYRIGHT */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; {currentYear} Universal MultiTrading Inc. All rights reserved. </p>
+            <p>&copy; {currentYear} Universal Ventures Inc. All rights reserved. </p>
              <p>Developed by Innomatrics Technologies</p>
             <div className="footer-legal">
             </div>

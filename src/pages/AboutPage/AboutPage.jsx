@@ -45,11 +45,11 @@ const AboutPage = () => {
           <div className="about-hero-content">
 
             <h1 className="about-hero-title no-scroll-animate">
-              About Universal MultiTrading Inc
+              About Universal Ventures
             </h1>
 
             <p className="about-hero-subtitle no-scroll-animate">
-              A subsidiary of Universell MultiTrading Group - Innovating for a Better Tomorrow
+              A subsidiary of Universell Ventures Group - Innovating for a Better Tomorrow
             </p>
 
             {/* ⭐ ONLY ONE BUTTON (EXPLORE OUR VENTURES) */}
@@ -80,7 +80,7 @@ const AboutPage = () => {
               <h2>Our Journey</h2>
 
               <p>
-                Founded in {companyInfo.founded}, Universal MultiTrading Inc
+                Founded in {companyInfo.founded}, Universal Ventures Inc
                 is a rapidly growing conglomerate with a strong presence in multiple industries.
               </p>
 

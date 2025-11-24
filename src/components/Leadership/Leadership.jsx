@@ -17,24 +17,6 @@ import {
 
 const Leadership = () => {
   const leaders = [
-    // {
-    //   name: 'Manjunath S Chetty',
-    //   role: 'Partner',
-    //   image: '/images/leadership/manjunath-chetty.jpg',
-    //   description: 'Visionary leader with extensive experience in business development and strategic planning.'
-    // },
-    // {
-    //   name: 'Ahamed Basha',
-    //   role: 'Partner',
-    //   image: '/images/leadership/ahamed-basha.jpg',
-    //   description: 'Expert in operations management and driving growth across diverse business verticals.'
-    // },
-    // {
-    //   name: 'Col Chennakeshava Rao',
-    //   role: 'Partner',
-    //   image: '/images/leadership/chennakeshava-rao.jpg',
-    //   description: 'Seasoned professional with strong leadership skills and expertise in project management.'
-    // }
   ]
 
   return (
@@ -44,7 +26,7 @@ const Leadership = () => {
         <div className="leadership-header text-center mb-4">
           <h2 className="leadership-title">Our Leadership</h2>
           <p className="leadership-subtitle">
-            Meet the visionary partners driving Universal MultiTrading Inc towards excellence
+            Meet the visionary partners driving Universal Ventures Inc towards excellence
           </p>
         </div>
 

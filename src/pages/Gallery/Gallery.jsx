@@ -25,9 +25,6 @@ const Gallery = () => {
     { id: 2, category: 'construction', image: '/images/projects/construction2.jpeg', title: 'Commercial Building', description: 'State-of-the-art commercial space development' },
     { id: 3, category: 'interior', image: '/images/projects/interior1.jpeg', title: 'Luxury Villa Interior', description: 'Premium interior design for residential villa' },
     { id: 4, category: 'interior', image: '/images/projects/interior2.jpeg', title: 'Office Space Design', description: 'Modern workspace interior design' },
-    { id: 5, category: 'projects', image: '/images/projects/project1.jpeg', title: 'Project Alpha', description: 'Large-scale infrastructure development' },
-    { id: 6, category: 'projects', image: '/images/projects/project2.jpeg', title: 'Project Beta', description: 'Innovative construction technology implementation' },
-    { id: 7, category: 'projects', image: '/images/projects/project3.jpeg', title: 'Project Gamma', description: 'Sustainable building practices showcase' },
     { id: 8, category: 'events', image: '/images/projects/project4.jpeg', title: 'Corporate Event', description: 'Premium transportation for corporate gathering' },
     { id: 9, category: 'events', image: '/images/projects/project5.jpeg', title: 'VIP Movement', description: 'Luxury travel solutions for VIP clients' }
   ]

@@ -53,7 +53,7 @@ const About = () => {
     <section id="about" className="about section">
       <div className="container">
         <div className="about-header text-center mb-4">
-          <h2 className="about-title">About Universal MultiTrading Inc</h2>
+          <h2 className="about-title">About Universal Ventures Inc</h2>
           <p className="about-subtitle">
             A subsidiary of Fenix Group - Innovating for a Better Tomorrow
           </p>
@@ -63,12 +63,12 @@ const About = () => {
           <div className="about-text">
             <h3>Our Journey</h3>
             <p>
-              Founded in 2019, Universal MultiTrading Inc 
+              Founded in 2019, Universal Ventures Inc 
               is a rapidly growing conglomerate with a strong presence in multiple industries. 
             </p>
             <p>
               Comprising of Partners namely, Manjunath S Chetty, Ahamed Basha and 
-              Col Chennakeshava Rao, Universal MultiTrading Inc has become a trusted 
+               Universal Ventures Inc has become a trusted 
               name in construction, exports, interior solutions, trading, travel services, 
               healthcare, automobile care, and more.
             </p>
