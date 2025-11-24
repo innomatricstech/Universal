@@ -143,11 +143,9 @@ const Footer = () => {
         {/* BOTTOM COPYRIGHT */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; {currentYear} Universal MultiTrading Inc. All rights reserved.  <p>Developed by Innomatrics Technologies</p></p>
+            <p>&copy; {currentYear} Universal MultiTrading Inc. All rights reserved. </p>
+             <p>Developed by Innomatrics Technologies</p>
             <div className="footer-legal">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Cookie Policy</a>
             </div>
           </div>
         </div>
