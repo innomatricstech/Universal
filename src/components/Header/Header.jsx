@@ -78,78 +78,74 @@ const Header = () => {
         <div className="glow-effect"></div>
       </div>
 
-      <div className="container">
-        <div className="header-content">
-          {/* Enhanced Logo with Larger Size */}
-          <Link 
-            to="/" 
-            className="logo" 
-            aria-label="Go to homepage"
-            onMouseEnter={() => setIsHovered(true)}
-          >
-            <div className="logo-container">
-              <img 
-                src="/images/multi.png" 
-                alt="Universal MultiTrading Inc" 
-                className="logo-image"
-              />
-              <div className="logo-glow"></div>
-            </div>
-            <div className="logo-text">
-              <span className="logo-main">Universal Ventures</span>
-              <span className="logo-sub">Universal Group</span>
-            </div>
-          </Link>
-
-          {/* Enhanced Navigation with Hover Effects */}
-          <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
-            {navItems.map((item, index) => (
-              <div 
-                key={item.path}
-                className="nav-item-wrapper"
-                onMouseEnter={() => handleNavHover(index)}
-                onMouseLeave={handleNavLeave}
-              >
-                <Link
-                  to={item.path}
-                  className={`nav-link ${
-                    location.pathname === item.path ? "nav-link-active" : ""
-                  } ${activeIndex === index ? "nav-link-hover" : ""}`}
-                >
-                  <span className="nav-text">{item.label}</span>
-                  <span className="nav-dot"></span>
-                </Link>
-                <div className="nav-highlight"></div>
-              </div>
-            ))}
-          </nav>
-
-          {/* Enhanced Header Actions */}
-          <div className="header-actions">
-            <Button
-              variant="primary"
-              size="small"
-              className="cta-button"
-              onClick={handleContactClick}
-            >
-              <span className="btn-text">Contact Us</span>
-              <span className="btn-icon">→</span>
-              <div className="btn-shine"></div>
-            </Button>
-
-            {/* Enhanced Mobile Menu Toggle */}
-            <button
-              className={`menu-toggle ${isMenuOpen ? "menu-toggle-open" : ""}`}
-              onClick={() => setIsMenuOpen((s) => !s)}
-              aria-expanded={isMenuOpen}
-              aria-label="Toggle menu"
-            >
-              <span className="menu-line"></span>
-              <span className="menu-line"></span>
-              <span className="menu-line"></span>
-              <div className="menu-circle"></div>
-            </button>
+      <div className="header-content">
+        {/* Enhanced Logo with Responsive Size */}
+        <Link 
+          to="/" 
+          className="logo" 
+          aria-label="Go to homepage"
+          onMouseEnter={() => setIsHovered(true)}
+        >
+          <div className="logo-container">
+            <img 
+              src="/images/multi.png" 
+              alt="Universal MultiTrading Inc" 
+              className="logo-image"
+            />
           </div>
+          <div className="logo-text">
+            <span className="logo-main">Universal Ventures</span>
+            <span className="logo-sub">Universal Group</span>
+          </div>
+        </Link>
+
+        {/* Enhanced Navigation with Hover Effects */}
+        <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
+          {navItems.map((item, index) => (
+            <div 
+              key={item.path}
+              className="nav-item-wrapper"
+              onMouseEnter={() => handleNavHover(index)}
+              onMouseLeave={handleNavLeave}
+            >
+              <Link
+                to={item.path}
+                className={`nav-link ${
+                  location.pathname === item.path ? "nav-link-active" : ""
+                } ${activeIndex === index ? "nav-link-hover" : ""}`}
+              >
+                <span className="nav-text">{item.label}</span>
+                <span className="nav-dot"></span>
+              </Link>
+              <div className="nav-highlight"></div>
+            </div>
+          ))}
+        </nav>
+
+        {/* Enhanced Header Actions */}
+        <div className="header-actions">
+          <Button
+            variant="primary"
+            size="small"
+            className="cta-button"
+            onClick={handleContactClick}
+          >
+            <span className="btn-text">Contact Us</span>
+            <span className="btn-icon">→</span>
+            <div className="btn-shine"></div>
+          </Button>
+
+          {/* Enhanced Mobile Menu Toggle */}
+          <button
+            className={`menu-toggle ${isMenuOpen ? "menu-toggle-open" : ""}`}
+            onClick={() => setIsMenuOpen((s) => !s)}
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle menu"
+          >
+            <span className="menu-line"></span>
+            <span className="menu-line"></span>
+            <span className="menu-line"></span>
+          </button>
         </div>
       </div>
 
