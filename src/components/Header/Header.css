@@ -1,5 +1,6 @@
+/* src/components/Header/Header.css */
 /* ==========================
-    BASE HEADER STYLES
+    BASE HEADER STYLES - SMALLER
 ========================== */
 .header {
     width: 100%;
@@ -7,7 +8,7 @@
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 15px 0;
+    padding: 8px 0; /* Reduced padding */
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     /* Enhanced Glass Effect */
@@ -16,24 +17,24 @@
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow:
-        0 4px 20px rgba(120, 60, 255, 0.1),
+        0 2px 15px rgba(120, 60, 255, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .header-scrolled {
-    padding: 10px 0;
-    background: rgba(255, 255, 255, 0.92);
+    padding: 5px 0; /* Further reduced padding when scrolled */
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(25px) saturate(200%);
     -webkit-backdrop-filter: blur(25px) saturate(200%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow:
-        0 8px 32px rgba(120, 60, 255, 0.15),
+        0 4px 25px rgba(120, 60, 255, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
     transform: translateY(0);
 }
 
 .header-hovered {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(30px) saturate(200%);
 }
 
@@ -64,30 +65,39 @@
 }
 
 .shape-1 {
-    width: 80px;
-    height: 80px;
-    top: -20px;
+    width: 60px;
+    height: 60px;
+    top: -15px;
     left: 10%;
     animation-delay: 0s;
 }
 
 .shape-2 {
-    width: 60px;
-    height: 60px;
-    top: -10px;
+    width: 45px;
+    height: 45px;
+    top: -8px;
     right: 20%;
     animation-delay: 2s;
 }
 
 .shape-3 {
-    width: 40px;
-    height: 40px;
-    bottom: -10px;
+    width: 30px;
+    height: 30px;
+    bottom: -8px;
     left: 50%;
     animation-delay: 4s;
 }
 
-
+.glow-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(55, 88, 255, 0.03) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
 
 .header-hovered .glow-effect {
     opacity: 1;
@@ -102,37 +112,39 @@
     z-index: 2;
 }
 
+/* ==========================
+    ENHANCED LOGO - LARGER SIZE
+========================== */
 .logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: px;
     text-decoration: none;
     position: relative;
 }
 
-
 .logo-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .logo-image {
-    /* --- MODIFIED SIZE --- */
-    width: 70px; /* Base width */
-    height: 70px; /* Base height corrected from 500px to 70px */
+    /* --- LARGER LOGO SIZE --- */
+    width: 170px; /* Increased from 70px */
+    height: 100px; /* Increased from 70px */
     object-fit: fill;
-    border-radius: 14px;
+    border-radius: 16px;
     z-index: 2;
-
 }
-
 
 .header-scrolled .logo-image {
-    /* --- SCROLLED SIZE ADJUSTED --- */
-    width: 45px;
-    height: 45px;
+    /* --- SCROLLED SIZE - Still larger than before --- */
+    width: 65px; /* Increased from 45px */
+    height: 65px; /* Increased from 45px */
 }
+
 
 .logo-text {
     display: flex;
@@ -141,52 +153,47 @@
 }
 
 .logo-main {
-    font-size: 1.25rem;
+    font-size: 1.3rem; /* Slightly larger */
     font-weight: 900;
     background-clip: text;
     letter-spacing: 0.5px;
+    transition: all 0.3s ease;
 }
 
-
 .logo-sub {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    color: #5f2a8f;
     opacity: 0.9;
     transition: all 0.3s ease;
 }
 
-.logo:hover .logo-sub {
-    color: #9f6bff;
-    transform: translateX(5px);
-}
 
 /* ==========================
     ENHANCED NAVIGATION
 ========================== */
 .nav {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     align-items: center;
     position: relative;
 }
 
 .nav-item-wrapper {
     position: relative;
-    padding: 8px 0;
+    padding: 6px 0;
 }
 
 .nav-link {
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: #2a0038;
     position: relative;
-    padding: 8px 0;
+    padding: 6px 0;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     overflow: hidden;
 }
 
@@ -197,8 +204,8 @@
 }
 
 .nav-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: linear-gradient(135deg, #3758ff, #9f6bff);
     opacity: 0;
@@ -227,14 +234,14 @@
 }
 
 .nav-link:hover .nav-text {
-    transform: translateX(5px);
+    transform: translateX(4px);
     color: #a064ff;
-    text-shadow: 0 0 20px rgba(160, 100, 255, 0.6);
+    text-shadow: 0 0 15px rgba(160, 100, 255, 0.5);
 }
 
 .nav-link-active .nav-text {
     color: #7a2cff;
-    text-shadow: 0 0 15px rgba(122, 44, 255, 0.4);
+    text-shadow: 0 0 12px rgba(122, 44, 255, 0.3);
 }
 
 .nav-link::before {
@@ -254,22 +261,6 @@
     width: 100%;
 }
 
-/* Cursor Trail Effect */
-.nav-cursor-trail {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, rgba(55, 88, 255, 0.3) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.nav:hover .nav-cursor-trail {
-    opacity: 1;
-}
-
 /* ==========================
     ENHANCED CTA BUTTON
 ========================== */
@@ -277,31 +268,31 @@
     position: relative;
     overflow: hidden;
     border: none;
-    border-radius: 12px;
-    padding: 12px 24px;
+    border-radius: 10px;
+    padding: 10px 20px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     background: linear-gradient(135deg, #3758ff, #9f6bff);
     color: white;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     box-shadow:
-        0 4px 15px rgba(55, 88, 255, 0.3),
-        0 2px 8px rgba(0, 0, 0, 0.1);
+        0 3px 12px rgba(55, 88, 255, 0.25),
+        0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button:hover {
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-2px) scale(1.03);
     box-shadow:
-        0 12px 30px rgba(55, 88, 255, 0.4),
-        0 6px 20px rgba(0, 0, 0, 0.15);
+        0 8px 25px rgba(55, 88, 255, 0.35),
+        0 4px 15px rgba(0, 0, 0, 0.12);
 }
 
 .cta-button:active {
-    transform: translateY(-1px) scale(1.02);
+    transform: translateY(0) scale(1);
 }
 
 .btn-text {
@@ -317,7 +308,7 @@
 }
 
 .cta-button:hover .btn-icon {
-    transform: translateX(3px) rotate(45deg);
+    transform: translateX(2px) rotate(45deg);
 }
 
 .btn-shine {
@@ -342,8 +333,8 @@
     ENHANCED MOBILE MENU TOGGLE
 ========================== */
 .menu-toggle {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -351,7 +342,7 @@
     cursor: pointer;
     background: rgba(255, 255, 255, 0.8);
     border: 2px solid rgba(120, 60, 255, 0.1);
-    border-radius: 12px;
+    border-radius: 10px;
     position: relative;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     backdrop-filter: blur(10px);
@@ -360,11 +351,11 @@
 .menu-toggle:hover {
     background: rgba(255, 255, 255, 0.9);
     border-color: rgba(120, 60, 255, 0.3);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .menu-line {
-    width: 20px;
+    width: 18px;
     height: 2px;
     background: #2a0038;
     border-radius: 2px;
@@ -373,7 +364,7 @@
 }
 
 .menu-line:nth-child(1) {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 }
 
 .menu-line:nth-child(2) {
@@ -381,7 +372,7 @@
 }
 
 .menu-line:nth-child(3) {
-    transform: translateY(6px);
+    transform: translateY(5px);
 }
 
 .menu-toggle-open .menu-line:nth-child(1) {
@@ -417,7 +408,7 @@
 }
 
 /* ==========================
-    MOBILE NAVIGATION - FIXED
+    MOBILE NAVIGATION
 ========================== */
 @media (max-width: 900px) {
     .nav {
@@ -425,14 +416,14 @@
         top: 0;
         right: -100%;
         height: 100vh;
-        width: 300px;
+        width: 280px;
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(40px);
         flex-direction: column;
-        padding: 120px 30px 40px;
+        padding: 100px 25px 30px;
         gap: 0;
-        transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        box-shadow: -10px 0 50px rgba(0, 0, 0, 0.15);
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
         border-left: 1px solid rgba(255, 255, 255, 0.4);
     }
 
@@ -442,7 +433,7 @@
 
     .nav-item-wrapper {
         width: 100%;
-        padding: 12px 0;
+        padding: 10px 0;
         border-bottom: 1px solid rgba(120, 60, 255, 0.08);
     }
 
@@ -451,29 +442,29 @@
     }
 
     .nav-link {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        padding: 15px 0;
+        padding: 12px 0;
         justify-content: flex-start;
-        gap: 15px;
+        gap: 12px;
         color: #2a0038;
         width: 100%;
     }
 
     .nav-text {
-        font-size: 1.1rem;
+        font-size: 1rem;
         transition: all 0.3s ease;
     }
 
     .nav-link:hover .nav-text,
     .nav-link-active .nav-text {
         color: #7a2cff;
-        transform: translateX(10px);
+        transform: translateX(8px);
     }
 
     .nav-dot {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         background: linear-gradient(135deg, #3758ff, #9f6bff);
         opacity: 0;
         transform: scale(0);
@@ -486,38 +477,40 @@
         transform: scale(1);
     }
 
-    /* Centered CTA Button in Mobile Menu */
+    /* Mobile CTA Button */
     .nav-cta-wrapper {
         width: 100%;
         display: flex;
         justify-content: center;
-        margin-top: 30px;
-        padding-top: 20px;
+        margin-top: 25px;
+        padding-top: 15px;
         border-top: 1px solid rgba(120, 60, 255, 0.1);
     }
 
     .nav-cta-button {
         width: 100%;
-        max-width: 200px;
+        max-width: 180px;
         display: flex;
         justify-content: center;
+        align-items: center;
+        gap: 8px;
         background: linear-gradient(135deg, #3758ff, #9f6bff);
         color: white;
         border: none;
-        border-radius: 12px;
-        padding: 15px 25px;
+        border-radius: 10px;
+        padding: 12px 20px;
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 0.9rem;
         cursor: pointer;
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        box-shadow: 0 4px 15px rgba(55, 88, 255, 0.3);
+        box-shadow: 0 3px 12px rgba(55, 88, 255, 0.3);
         position: relative;
         overflow: hidden;
     }
 
     .nav-cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(55, 88, 255, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(55, 88, 255, 0.4);
     }
 
     .menu-toggle {
@@ -531,9 +524,10 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(8px);
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(6px);
         z-index: 998;
+        animation: fadeIn 0.3s ease-out;
     }
 
     /* Enhanced mobile menu background */
@@ -562,24 +556,24 @@
     }
 
     .m-shape-1 {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
         top: 10%;
-        left: -75px;
+        left: -60px;
         animation-delay: 0s;
     }
 
     .m-shape-2 {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         bottom: 20%;
-        right: -50px;
+        right: -40px;
         animation-delay: 2.5s;
     }
 
     .m-shape-3 {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
         top: 60%;
         left: 40%;
         animation-delay: 5s;
@@ -587,12 +581,31 @@
 
     /* Header content adjustment for mobile */
     .header-content {
-        padding: 0 15px;
+        padding: 0 12px;
     }
 
     /* Hide the original CTA button in header on mobile */
     .header-actions .cta-button {
         display: none;
+    }
+
+    /* Mobile logo adjustments */
+    .logo-image {
+        width: 90px;
+        height: 50px;
+    }
+
+    .header-scrolled .logo-image {
+        width: 150px;
+        height: 100px;
+    }
+
+    .logo-main {
+        font-size: 1.1rem;
+    }
+
+    .logo-sub {
+        font-size: 0.75rem;
     }
 }
 
@@ -601,14 +614,12 @@
 ========================== */
 @media (max-width: 480px) {
     .nav {
-        width: 280px;
-        padding: 100px 25px 30px;
+        width: 260px;
+        padding: 90px 20px 25px;
     }
 
     .logo-text {
         display: flex !important;
-        /* Force show logo text */
-        flex-direction: column;
     }
 
     .logo-main {
@@ -620,46 +631,51 @@
     }
 
     .logo {
-        gap: 10px;
+        gap:0px;
     }
 
     .logo-image {
-        width: 42px;
-        height: 42px;
+        width: 200px;
+        height: 60px;
+    }
+
+    .header-scrolled .logo-image {
+        width: 50px;
+        height: 50px;
     }
 
     .menu-toggle {
-        width: 38px;
-        height: 38px;
+        width: 34px;
+        height: 34px;
     }
 
     .nav-link {
-        font-size: 1.1rem;
-        padding: 14px 0;
+        font-size: 1rem;
+        padding: 11px 0;
     }
 
     .nav-cta-button {
-        padding: 14px 20px;
-        font-size: 0.9rem;
-        max-width: 180px;
+        padding: 11px 18px;
+        font-size: 0.85rem;
+        max-width: 160px;
     }
 
     /* Adjust mobile shapes for smaller screens */
     .m-shape-1 {
-        width: 120px;
-        height: 120px;
-        left: -60px;
+        width: 100px;
+        height: 100px;
+        left: -50px;
     }
 
     .m-shape-2 {
-        width: 80px;
-        height: 80px;
-        right: -40px;
+        width: 70px;
+        height: 70px;
+        right: -35px;
     }
 
     .m-shape-3 {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -668,12 +684,12 @@
 ========================== */
 @media (max-width: 360px) {
     .nav {
-        width: 260px;
-        padding: 90px 20px 25px;
+        width: 240px;
+        padding: 80px 15px 20px;
     }
 
     .logo-main {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .logo-sub {
@@ -681,58 +697,73 @@
     }
 
     .logo-image {
-        width: 38px;
-        height: 38px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .header-scrolled .logo-image {
+        width: 45px;
+        height: 45px;
     }
 
     .nav-link {
-        font-size: 1rem;
-        padding: 12px 0;
+        font-size: 0.95rem;
+        padding: 10px 0;
     }
 
     .nav-cta-button {
-        padding: 12px 18px;
-        font-size: 0.85rem;
-        max-width: 160px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        max-width: 150px;
     }
 }
 
 /* ==========================
-    MOBILE ANIMATIONS
+    ANIMATIONS
 ========================== */
-@keyframes floatMobile {
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.03;
+    }
+    33% {
+        transform: translate(10px, -8px) scale(1.05);
+        opacity: 0.05;
+    }
+    66% {
+        transform: translate(-8px, 6px) scale(0.95);
+        opacity: 0.02;
+    }
+}
 
-    0%,
-    100% {
+@keyframes floatMobile {
+    0%, 100% {
         transform: translate(0, 0) scale(1);
         opacity: 0.04;
     }
-
     33% {
-        transform: translate(15px, -10px) scale(1.1);
+        transform: translate(12px, -8px) scale(1.08);
         opacity: 0.06;
     }
-
     66% {
-        transform: translate(-10px, 8px) scale(0.9);
+        transform: translate(-8px, 6px) scale(0.92);
         opacity: 0.03;
     }
 }
 
-/* Smooth transitions for mobile menu */
-.nav {
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mobile-overlay {
-    animation: fadeIn 0.3s ease-out;
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }

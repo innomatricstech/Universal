@@ -13,7 +13,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 30);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -80,7 +80,7 @@ const Header = () => {
 
       <div className="container">
         <div className="header-content">
-          {/* Enhanced Logo with Animation */}
+          {/* Enhanced Logo with Larger Size */}
           <Link 
             to="/" 
             className="logo" 
@@ -122,9 +122,6 @@ const Header = () => {
                 <div className="nav-highlight"></div>
               </div>
             ))}
-            
-            {/* Animated Cursor Trail for Desktop */}
-            <div className="nav-cursor-trail"></div>
           </nav>
 
           {/* Enhanced Header Actions */}
