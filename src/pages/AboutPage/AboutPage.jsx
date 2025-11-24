@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom'
 import Button from '../../components/common/Button/Button'
 import Card, { CardBody } from '../../components/common/Card/Card'
 
-import { 
-  getCompanyInfo, 
-  getCoreValues, 
-  getFuturePlans, 
-  getLeadership 
+import {
+  getCompanyInfo,
+  getCoreValues,
+  getFuturePlans,
+  // Removed getLeadership 
 } from '../../utils/data.js'
 
 import { initRevealAnimations } from '../../utils/helpers.js'
 import './AboutPage.css'
 
 /* ⭐ Icons */
-import { 
-  FiAward, 
-  FiUsers, 
-  FiShield, 
-  FiStar, 
-  FiTrendingUp, 
+import {
+  FiAward,
+  FiUsers,
+  FiShield,
+  FiStar,
+  FiTrendingUp,
   FiTarget
 } from "react-icons/fi"
 
@@ -27,7 +27,7 @@ const AboutPage = () => {
   const companyInfo = getCompanyInfo()
   const coreValues = getCoreValues()
   const futurePlans = getFuturePlans()
-  const leaders = getLeadership()
+  // Removed const leaders = getLeadership()
 
   useEffect(() => {
     initRevealAnimations()
@@ -38,8 +38,8 @@ const AboutPage = () => {
     <div className="about-page">
 
       {/* ================================
-          HERO SECTION
-      ================================= */}
+          HERO SECTION
+      ================================= */}
       <section className="about-hero">
         <div className="container">
           <div className="about-hero-content">
@@ -67,9 +67,11 @@ const AboutPage = () => {
         <div className="about-hero-overlay"></div>
       </section>
 
+      ---
+
       {/* ================================
-          COMPANY OVERVIEW
-      ================================= */}
+          COMPANY OVERVIEW
+      ================================= */}
       <section className="company-overview section">
         <div className="container">
           <div className="overview-content grid">
@@ -78,13 +80,13 @@ const AboutPage = () => {
               <h2>Our Journey</h2>
 
               <p>
-                Founded in {companyInfo.founded}, Universal MultiTrading Inc 
+                Founded in {companyInfo.founded}, Universal MultiTrading Inc
                 is a rapidly growing conglomerate with a strong presence in multiple industries.
               </p>
 
               <p>
-                Comprising of partners Manjunath S Chetty, Ahamed Basha and Col Chennakeshava Rao, 
-                Universal MultiTrading Inc has become a trusted name across construction, exports, 
+                Comprising of partners Manjunath S Chetty, Ahamed Basha and Col Chennakeshava Rao,
+                Universal MultiTrading Inc has become a trusted name across construction, exports,
                 trading, interiors, travel, healthcare, and more.
               </p>
 
@@ -113,7 +115,7 @@ const AboutPage = () => {
 
             <div className="overview-image reveal">
               <div className="image-container">
-                <img 
+                <img
                   src="/images/fenix-multitrading.jpeg"
                   alt="Universal MultiTrading Inc Office"
                   onError={(e) => e.target.src = '/images/fenix-multitrading.jpeg'}
@@ -125,9 +127,11 @@ const AboutPage = () => {
         </div>
       </section>
 
+      ---
+
       {/* ================================
-          CORE VALUES
-      ================================= */}
+          CORE VALUES
+      ================================= */}
       <section className="core-values-section section">
         <div className="container">
 
@@ -157,63 +161,18 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* ================================
-          LEADERSHIP
-      ================================= */}
-      <section className="leadership-section section">
-        <div className="container">
-
-          <div className="section-header text-center mb-4">
-            <h2>Our Leadership Team</h2>
-            <p>Meet the visionary partners driving our success</p>
-          </div>
-
-          <div className="leaders-grid">
-            {leaders.map((leader, index) => (
-              <Card key={index} hover className="leader-card reveal">
-                
-                <div className="leader-image">
-                  <img 
-                    src={leader.image} 
-                    alt={leader.name}
-                    onError={(e) => e.target.src = '/images/multi.jpeg'}
-                  />
-                </div>
-
-                <CardBody className="text-center">
-                  <h3 className="leader-name">{leader.name}</h3>
-                  <p className="leader-role">{leader.role}</p>
-                  <p className="leader-description">{leader.description}</p>
-
-                  <div className="leader-expertise">
-                    <strong><FiTarget /> Expertise:</strong>
-
-                    <div className="expertise-tags">
-                      {leader.expertise.map((skill, idx) => (
-                        <span key={idx} className="expertise-tag">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </CardBody>
-
-              </Card>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      ---
 
       {/* ================================
-          FUTURE PLANS
-      ================================= */}
+          FUTURE PLANS
+      ================================= */}
       <section className="future-plans-section section">
         <div className="container">
 
           <div className="section-header text-center mb-4">
             <h2>Future Expansion Plans</h2>
             <p>Our vision for growth and diversification</p>
+
           </div>
 
           <div className="plans-grid">
@@ -240,9 +199,11 @@ const AboutPage = () => {
         </div>
       </section>
 
+      ---
+
       {/* ================================
-          CTA
-      ================================= */}
+          CTA
+      ================================= */}
       <section className="about-cta section">
         <div className="container">
           <div className="cta-content text-center">
@@ -250,15 +211,6 @@ const AboutPage = () => {
             <h2>Ready to Grow With Us?</h2>
             <p>Join our journey of innovation and excellence</p>
 
-            {/* <div className="cta-actions">
-              <Button variant="primary" size="large" as={Link} to="/contact">
-                Partner With Us
-              </Button>
-
-              <Button variant="secondary" size="large" as={Link} to="/ventures">
-                Explore Ventures
-              </Button>
-            </div> */}
 
           </div>
         </div>

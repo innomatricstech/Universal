@@ -79,17 +79,6 @@ export const getServices = () => [
     description: 'Luxury transportation and concierge services',
     icon: '🚗',
     ventures: ['Universel Travel Solutions']
-  },
-  {
-    title: 'Healthcare & Wellness',
-    description: 'Pharmaceuticals and healthcare products distribution',
-    icon: '🏥',
-    ventures: ['Med-X Pharma', 'Universel Foundation']
-  },
-  {
-    title: 'Consumer Goods',
-    description: 'Quality packaged drinking water and automotive care',
-    icon: '🛒',
-    ventures: ['Le Acqua', 'Autofix Car Care & Services']
   }
+
 ]

@@ -1,7 +1,6 @@
 // src/pages/VenturesPage/VenturesPage.jsx
-
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import Button from '../../components/common/Button/Button'
 import Card, { CardBody } from '../../components/common/Card/Card'
 import { getVentures, getServices } from '../../utils/data.js'
@@ -15,14 +14,7 @@ const VenturesPage = () => {
   const services = getServices()
 
   const categories = [
-    { id: 'all', name: 'All Ventures' },
-    { id: 'construction', name: 'Construction' },
-    { id: 'trade', name: 'Trade' },
-    { id: 'design', name: 'Design' },
-    { id: 'services', name: 'Services' },
-    { id: 'healthcare', name: 'Healthcare' },
-    { id: 'consumer-goods', name: 'Consumer Goods' },
-    { id: 'non-profit', name: 'Non-Profit' }
+    // add categories if needed
   ]
 
   const filteredVentures =
@@ -35,9 +27,33 @@ const VenturesPage = () => {
     window.scrollTo(0, 0)
   }, [])
 
+  // navigation + location to handle contact button
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleContactClick = () => {
+    // If we're already on the home page, scroll to the contact section immediately
+    if (location.pathname === '/') {
+      const el = document.getElementById('contact')
+      if (el) {
+        // small timeout so any layout/reveal can settle
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120)
+        return
+      }
+    }
+
+    // Otherwise set a flag so Home.jsx knows to scroll when it mounts/updates,
+    // then navigate to the home route.
+    try {
+      sessionStorage.setItem('scrollToContact', '1')
+    } catch (e) {
+      // ignore storage errors (private mode, etc.)
+    }
+    navigate('/')
+  }
+
   return (
     <div className="ventures-page">
-
       {/* HERO SECTION */}
       <section className="ventures-hero">
         <div className="container">
@@ -115,7 +131,6 @@ const VenturesPage = () => {
           <div className="ventures-grid">
             {filteredVentures.map((venture) => (
               <Card key={venture.id} hover className="venture-card reveal">
-
                 <div className="venture-image">
                   <img
                     src={venture.image}
@@ -133,22 +148,24 @@ const VenturesPage = () => {
                   <h3 className="venture-name">{venture.name}</h3>
                   <p className="venture-description">{venture.description}</p>
 
-                  {/* UPDATED BUTTONS */}
+                  {/* UPDATED BUTTONS - Learn More now routes to /about */}
                   <div className="venture-actions">
-                    <Link to={`/ventures#${venture.category}`}>
+                    <Link to="/about">
                       <Button variant="primary" size="small">
                         Learn More
                       </Button>
                     </Link>
 
-                    <Link to="/contact">
-                      <Button variant="secondary" size="small">
-                        Contact
-                      </Button>
-                    </Link>
+                    <Button
+                      variant="primary"
+                      size="small"
+                      className="cta-button"
+                      onClick={handleContactClick}
+                    >
+                      Contact
+                    </Button>
                   </div>
                 </CardBody>
-
               </Card>
             ))}
           </div>
@@ -170,7 +187,6 @@ const VenturesPage = () => {
       <section className="ventures-stats section">
         <div className="container">
           <div className="stats-grid">
-
             <div className="stat-item reveal">
               <div className="stat-number">9+</div>
               <div className="stat-label">Business Ventures</div>
@@ -190,7 +206,6 @@ const VenturesPage = () => {
               <div className="stat-number">5+</div>
               <div className="stat-label">Years Experience</div>
             </div>
-
           </div>
         </div>
       </section>
@@ -203,22 +218,26 @@ const VenturesPage = () => {
             <p>Let's discuss how we can work together to achieve mutual success</p>
 
             <div className="cta-actions">
-              <Link to="/contact">
-                <Button variant="primary" size="large">
-                  Start Partnership
-                </Button>
-              </Link>
+              {/* START PARTNERSHIP -> use Link to navigate reliably */}
+              <Button
+                variant="primary"
+                size="small"
+                className="cta-button"
+                onClick={handleContactClick}
+              >
+                Start Partnership
+              </Button>
 
               <Link to="/about">
                 <Button variant="secondary" size="large">
                   Learn About Us
+
                 </Button>
               </Link>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   )
 }

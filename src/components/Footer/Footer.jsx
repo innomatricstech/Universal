@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { FiPhone, FiMail, FiMapPin } from "react-icons/fi"
+import { FiPhone, FiMail, FiMapPin, FiArrowUp } from "react-icons/fi"
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa"
 import './Footer.css'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [showScrollTop, setShowScrollTop] = useState(false)
 
   const quickLinks = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About Us' },
     { path: '/ventures', label: 'Our Ventures' },
-    { path: '/gallery', label: 'Gallery' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/gallery', label: 'Gallery' }
   ]
 
   const ventures = [
@@ -29,6 +29,24 @@ const Footer = () => {
     { name: 'Instagram', icon: <FaInstagram />, url: '#' }
   ]
 
+  // Show/hide scroll to top button based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <footer className="footer">
       <div className="container">
@@ -37,10 +55,10 @@ const Footer = () => {
           {/* LOGO SECTION */}
           <div className="footer-section">
             <div className="footer-logo">
-              <img src="/images/multi.jpeg" alt="Universal MultiTrading Inc" />
+              <img src="/images/multi.png" alt="Universal MultiTrading Inc" />
               <div className="logo-text">
                 <span className="logo-main">Universal MultiTrading</span>
-                <span className="logo-sub">Universe Group</span>
+                <span className="logo-sub">Universal Group</span>
               </div>
             </div>
 
@@ -125,8 +143,7 @@ const Footer = () => {
         {/* BOTTOM COPYRIGHT */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; {currentYear} Universal MultiTrading Inc. All rights reserved.</p>
-
+            <p>&copy; {currentYear} Universal MultiTrading Inc. All rights reserved.  <p>Developed by Innomatrics Technologies</p></p>
             <div className="footer-legal">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>
@@ -136,6 +153,17 @@ const Footer = () => {
         </div>
 
       </div>
+
+      {/* Scroll to Top Button - Inside Footer */}
+      {showScrollTop && (
+        <button 
+          className="scroll-to-top"
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+        >
+          <FiArrowUp />
+        </button>
+      )}
     </footer>
   )
 }

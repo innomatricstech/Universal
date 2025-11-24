@@ -45,13 +45,7 @@ const Home = () => {
       <About />
       <Ventures />
       <Leadership />
-      {/* IMPORTANT: contact section must keep id="contact" */}
       <Contact />
-
-      {/* ================================
-          ATTRACTIVE FLOATING ICON-ONLY PANEL
-          (WhatsApp + Call) on the right side
-         ================================ */}
       <div className="floating-contact-icons" aria-hidden={false}>
         <a
           href="https://wa.me/919972437119"

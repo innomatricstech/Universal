@@ -1,7 +1,6 @@
 // src/components/Contact/Contact.jsx
 import React, { useState, useEffect } from "react";
 import Button from "../common/Button/Button";
-import Card, { CardBody } from "../common/Card/Card";
 
 import { FiMapPin, FiPhoneCall, FiMail, FiMap } from "react-icons/fi";
 // EmailJS
@@ -95,8 +94,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" aria-label="Contact section">
-      
+    <section id="contact" aria-label="Contact section" tabIndex={-1}>
       <div className="contact-wrapper">
         <div className="contact-container">
           {/* LEFT SIDE */}
@@ -164,7 +162,7 @@ const Contact = () => {
 
           {/* RIGHT FORM */}
           <div className="right-box reveal">
-            <h2 className="right-title">Send Your Inquiry</h2>
+            <h2 className="right-title">Send Your Enquiry</h2>
 
             <form
               className="right-form"
@@ -250,7 +248,7 @@ const Contact = () => {
                 disabled={isSubmitting}
                 aria-disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Send Inquiry"}
+                {isSubmitting ? "Sending..." : "Send Enquiry"}
               </Button>
             </form>
           </div>

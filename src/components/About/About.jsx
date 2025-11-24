@@ -88,7 +88,7 @@ const About = () => {
           <div className="about-image">
             <div className="image-placeholder shimmer">
               <img 
-                src="/images/multi.jpeg"
+                src="/images/multi.png"
                 alt="Universal MultiTrading Team"
                 onLoad={(e) => e.target.parentElement.classList.remove('shimmer')}
               />
@@ -110,17 +110,6 @@ const About = () => {
             ))}
           </div>
         </div>
-
-        {/* <div className="about-actions text-center mt-4">
-          <Button 
-            variant="primary" 
-            size="large" 
-            as={Link} 
-            to="/about"
-          >
-            Learn More About Us
-          </Button>
-        </div> */}
       </div>
     </section>
   )
