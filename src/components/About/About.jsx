@@ -33,12 +33,12 @@ const About = () => {
     {
       icon: <FaStar />,
       title: 'Excellence in Quality',
-      description: 'Striving for the highest standards in products and services'
+      description: 'Striving for the highest standards in products and services.'
     },
     {
       icon: <FaLightbulb />,
       title: 'Sustainability & Innovation',
-      description: 'Adopting modern, eco-friendly, and efficient business practices'
+      description: 'Adopting modern, eco-friendly, and efficient business practices.'
     }
   ]
 
