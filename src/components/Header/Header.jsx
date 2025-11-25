@@ -1,4 +1,3 @@
-// src/components/Header/Header.jsx
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../common/Button/Button";
@@ -23,6 +22,17 @@ const Header = () => {
     setIsMenuOpen(false);
   }, [location]);
 
+  // If a previous page set the flag, scroll to #contact on load
+  useEffect(() => {
+    try {
+      const shouldScroll = sessionStorage.getItem("scrollToContact");
+      if (shouldScroll && document.getElementById("contact")) {
+        document.getElementById("contact").scrollIntoView({ behavior: "smooth", block: "start" });
+        sessionStorage.removeItem("scrollToContact");
+      }
+    } catch { }
+  }, []);
+
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
@@ -45,25 +55,17 @@ const Header = () => {
     } else {
       try {
         sessionStorage.setItem("scrollToContact", "1");
-      } catch (e) {
-        console.error("Session storage error:", e);
-      }
+      } catch { }
       navigate("/#contact");
     }
-    
     setIsMenuOpen(false);
   };
 
-  const handleNavHover = (index) => {
-    setActiveIndex(index);
-  };
-
-  const handleNavLeave = () => {
-    setActiveIndex(-1);
-  };
+  const handleNavHover = (index) => setActiveIndex(index);
+  const handleNavLeave = () => setActiveIndex(-1);
 
   return (
-    <header 
+    <header
       className={`header ${isScrolled ? "header-scrolled" : ""} ${isHovered ? "header-hovered" : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -71,38 +73,34 @@ const Header = () => {
       {/* Animated Background Elements */}
       <div className="header-background">
         <div className="floating-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
+          <div className="shape shape-1" />
+          <div className="shape shape-2" />
+          <div className="shape shape-3" />
         </div>
-        <div className="glow-effect"></div>
+        <div className="glow-effect" />
       </div>
 
       <div className="header-content">
-        {/* Enhanced Logo with Responsive Size */}
-        <Link 
-          to="/" 
-          className="logo" 
-          aria-label="Go to homepage"
-          onMouseEnter={() => setIsHovered(true)}
-        >
+        {/* Logo + brand */}
+        <Link to="/" className="logo" aria-label="Go to homepage" onMouseEnter={() => setIsHovered(true)}>
           <div className="logo-container">
-            <img 
-              src="/images/multi.png" 
-              alt="Universal MultiTrading Inc" 
+            <img
+              src="/images/multi.png"
+              alt="Universal MultiTrading Inc"
               className="logo-image"
             />
           </div>
           <div className="logo-text">
-            <span className="logo-main">Universal Ventures</span>
-            <span className="logo-sub">Universal Group</span>
+            <span className="logo-main" style={{ color: "orange" }}>Universal <span style={{ color: "" }}>Ventures</span></span>
+            <span className="logo-sub" style={{ color: "green" }}>Universal Group</span>
           </div>
+          <span className="logo-shine" />
         </Link>
 
-        {/* Enhanced Navigation with Hover Effects */}
+        {/* Navigation */}
         <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
           {navItems.map((item, index) => (
-            <div 
+            <div
               key={item.path}
               className="nav-item-wrapper"
               onMouseEnter={() => handleNavHover(index)}
@@ -110,19 +108,18 @@ const Header = () => {
             >
               <Link
                 to={item.path}
-                className={`nav-link ${
-                  location.pathname === item.path ? "nav-link-active" : ""
-                } ${activeIndex === index ? "nav-link-hover" : ""}`}
+                className={`nav-link ${location.pathname === item.path ? "nav-link-active" : ""
+                  } ${activeIndex === index ? "nav-link-hover" : ""}`}
               >
                 <span className="nav-text">{item.label}</span>
-                <span className="nav-dot"></span>
+                <span className="nav-dot" />
               </Link>
-              <div className="nav-highlight"></div>
+              <div className="nav-highlight" />
             </div>
           ))}
         </nav>
 
-        {/* Enhanced Header Actions */}
+        {/* Actions */}
         <div className="header-actions">
           <Button
             variant="primary"
@@ -132,34 +129,31 @@ const Header = () => {
           >
             <span className="btn-text">Contact Us</span>
             <span className="btn-icon">→</span>
-            <div className="btn-shine"></div>
+            <div className="btn-shine" />
           </Button>
 
-          {/* Enhanced Mobile Menu Toggle */}
+          {/* Mobile menu toggle */}
           <button
             className={`menu-toggle ${isMenuOpen ? "menu-toggle-open" : ""}`}
             onClick={() => setIsMenuOpen((s) => !s)}
             aria-expanded={isMenuOpen}
             aria-label="Toggle menu"
           >
-            <span className="menu-line"></span>
-            <span className="menu-line"></span>
-            <span className="menu-line"></span>
+            <span className="menu-line" />
+            <span className="menu-line" />
+            <span className="menu-line" />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile overlay */}
       {isMenuOpen && (
-        <div 
-          className="mobile-overlay"
-          onClick={() => setIsMenuOpen(false)}
-        >
+        <div className="mobile-overlay" onClick={() => setIsMenuOpen(false)}>
           <div className="mobile-menu-background">
             <div className="mobile-shapes">
-              <div className="mobile-shape m-shape-1"></div>
-              <div className="mobile-shape m-shape-2"></div>
-              <div className="mobile-shape m-shape-3"></div>
+              <div className="mobile-shape m-shape-1" />
+              <div className="mobile-shape m-shape-2" />
+              <div className="mobile-shape m-shape-3" />
             </div>
           </div>
         </div>
