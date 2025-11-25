@@ -17,20 +17,22 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
+  // close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
-  // If a previous page set the flag, scroll to #contact on load
+  // support “scroll to #contact” from other pages
   useEffect(() => {
     try {
-      const shouldScroll = sessionStorage.getItem("scrollToContact");
-      if (shouldScroll && document.getElementById("contact")) {
-        document.getElementById("contact").scrollIntoView({ behavior: "smooth", block: "start" });
+      const flag = sessionStorage.getItem("scrollToContact");
+      if (flag && document.getElementById("contact")) {
+        document
+          .getElementById("contact")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
         sessionStorage.removeItem("scrollToContact");
       }
-    } catch { }
+    } catch {}
   }, []);
 
   const navItems = [
@@ -41,9 +43,9 @@ const Header = () => {
   ];
 
   const scrollToContactOnPage = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    const el = document.getElementById("contact");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       return true;
     }
     return false;
@@ -55,34 +57,40 @@ const Header = () => {
     } else {
       try {
         sessionStorage.setItem("scrollToContact", "1");
-      } catch { }
+      } catch {}
       navigate("/#contact");
     }
     setIsMenuOpen(false);
   };
 
-  const handleNavHover = (index) => setActiveIndex(index);
+  const handleNavHover = (i) => setActiveIndex(i);
   const handleNavLeave = () => setActiveIndex(-1);
 
   return (
     <header
-      className={`header ${isScrolled ? "header-scrolled" : ""} ${isHovered ? "header-hovered" : ""}`}
+      className={`header ${isScrolled ? "header-scrolled" : ""} ${
+        isHovered ? "header-hovered" : ""
+      } ${isMenuOpen ? "header-menu-open" : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Animated Background Elements */}
+      {/* subtle decorative bg */}
       <div className="header-background">
         <div className="floating-shapes">
           <div className="shape shape-1" />
           <div className="shape shape-2" />
           <div className="shape shape-3" />
         </div>
-        <div className="glow-effect" />
       </div>
 
       <div className="header-content">
-        {/* Logo + brand */}
-        <Link to="/" className="logo" aria-label="Go to homepage" onMouseEnter={() => setIsHovered(true)}>
+        {/* logo + brand */}
+        <Link
+          to="/"
+          className="logo"
+          aria-label="Go to homepage"
+          onMouseEnter={() => setIsHovered(true)}
+        >
           <div className="logo-container">
             <img
               src="/images/multi.png"
@@ -91,13 +99,16 @@ const Header = () => {
             />
           </div>
           <div className="logo-text">
-            <span className="logo-main" style={{ color: "orange" }}>Universal <span style={{ color: "" }}>Ventures</span></span>
-            <span className="logo-sub" style={{ color: "green" }}>Universal Group</span>
+            <span className="logo-main" style={{ color: "orange" }}>
+              Universal <span>Ventures</span>
+            </span>
+            <span className="logo-sub" style={{ color: "green" }}>
+              Universal Group
+            </span>
           </div>
-          <span className="logo-shine" />
         </Link>
 
-        {/* Navigation */}
+        {/* navigation */}
         <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
           {navItems.map((item, index) => (
             <div
@@ -108,8 +119,9 @@ const Header = () => {
             >
               <Link
                 to={item.path}
-                className={`nav-link ${location.pathname === item.path ? "nav-link-active" : ""
-                  } ${activeIndex === index ? "nav-link-hover" : ""}`}
+                className={`nav-link ${
+                  location.pathname === item.path ? "nav-link-active" : ""
+                } ${activeIndex === index ? "nav-link-hover" : ""}`}
               >
                 <span className="nav-text">{item.label}</span>
                 <span className="nav-dot" />
@@ -119,7 +131,7 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Actions */}
+        {/* actions */}
         <div className="header-actions">
           <Button
             variant="primary"
@@ -132,21 +144,19 @@ const Header = () => {
             <div className="btn-shine" />
           </Button>
 
-          {/* Mobile menu toggle */}
+          {/* round mobile hamburger */}
           <button
             className={`menu-toggle ${isMenuOpen ? "menu-toggle-open" : ""}`}
             onClick={() => setIsMenuOpen((s) => !s)}
             aria-expanded={isMenuOpen}
             aria-label="Toggle menu"
           >
-            <span className="menu-line" />
-            <span className="menu-line" />
-            <span className="menu-line" />
+            ☰
           </button>
         </div>
       </div>
 
-      {/* Mobile overlay */}
+      {/* mobile overlay (click to close) */}
       {isMenuOpen && (
         <div className="mobile-overlay" onClick={() => setIsMenuOpen(false)}>
           <div className="mobile-menu-background">
