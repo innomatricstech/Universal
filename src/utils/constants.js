@@ -1,4 +1,4 @@
-// data.js (recommended) or appended below contact component file
+
 export const COMPANY_INFO = {
   name: "Universal Ventures Inc",
   parent: "Fenix Group",
